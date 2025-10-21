@@ -1,4 +1,1 @@
-{{/* Shim GA: nếu có cấu hình GA thì gọi internal template, còn không thì để trống */}}
-{{- if or .Site.GoogleAnalytics .Site.Params.googleAnalytics -}}
-  {{- template "_internal/google_analytics.html" . -}}
-{{- end -}}
+{{/* GA shim: intentionally empty (no Google Analytics) */}}
