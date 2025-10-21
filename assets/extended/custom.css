@@ -1,0 +1,74 @@
+/* ===== Posts list — grid cards minimal ===== */
+.filter-chips {
+  display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0 1.25rem;
+}
+.chip {
+  display:inline-block; padding:.35rem .7rem; border-radius:999px;
+  border:1px solid var(--border); background:var(--entry);
+  font-size:.9rem; text-decoration:none; color:var(--content);
+  transition:background .15s ease, border-color .15s ease, transform .06s ease;
+}
+.chip:hover { border-color:var(--primary); transform:translateY(-1px); }
+
+.cards-grid {
+  display:grid; gap:1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+.card {
+  border:1px solid var(--border); border-radius:16px; overflow:hidden;
+  background:var(--entry);
+  transition: transform .08s ease, box-shadow .15s ease, border-color .2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+.card__link { color:inherit; text-decoration:none; display:block; height:100%; }
+.card__cover {
+  height:140px; background-size:cover; background-position:center;
+  border-bottom:1px solid var(--border);
+}
+.card__body { padding:1rem 1.1rem 1.1rem; }
+.card__meta { display:flex; align-items:center; gap:.5rem; color:var(--secondary); font-size:.9rem; margin-bottom:.4rem; }
+.card__title { margin:0 0 .3rem; font-size:1.15rem; line-height:1.35; }
+.card__summary {
+  margin:.2rem 0 .8rem; font-size:.98rem; color:var(--content);
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.tag-list { display:flex; flex-wrap:wrap; gap:.4rem .5rem; list-style:none; padding:0; margin:0; }
+.tag { font-size:.8rem; padding:.2rem .55rem; border-radius:999px; background:var(--tertiary); color:var(--content); }
+.dot { width:4px; height:4px; background:var(--secondary); border-radius:999px; display:inline-block; }
+/* ===== Background image cho toàn bộ site ===== */
+body::before{
+  content: "";
+  position: fixed;    /* nằm dưới toàn bộ nội dung, không cuộn theo */
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.25)
+    ),
+    url('/Do_An_Mon_Hoc_Lap_Trinh_Mang/img/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark){
+  body::before{
+    background-image:
+      linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+      url('/Do_An_Mon_Hoc_Lap_Trinh_Mang/img/bg.jpg');
+  }
+}
+
+/* Đảm bảo card/entry vẫn dễ đọc (tùy chọn nhẹ) */
+.post-entry, .first-entry, .tag-entry, .soft-card, .single .post-content{
+  background: color-mix(in oklab, var(--entry) 92%, transparent);
+  backdrop-filter: blur(2px);
+  border-radius: 14px;
+}

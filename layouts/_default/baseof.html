@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
+
+<head>
+    {{- partial "head.html" . }}
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ "img/bg.jpg" | relURL }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        .main {
+            background: rgba(0, 0, 0, 0.5);
+            min-height: 100vh;
+        }
+
+        .post-entry {
+            background: rgba(30, 30, 30, 0.7) !important;
+        }
+
+        .first-entry {
+            background: rgba(30, 30, 30, 0.7) !important;
+        }
+
+        .post-content {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .profile-card {
+            background: rgba(30, 30, 30, 0.7) !important;
+        }
+    </style>
+</head>
+
+<body class="{{ if .IsHome }}home-body{{ else }}list-body{{ end }}">
+    {{- partialCached "header.html" . .Page -}}
+    <main class="main">
+        {{- block "main" . }}{{ end }}
+    </main>
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") -}}
+</body>
+
+</html>
+<style>
+  /* 1) Tăng độ rộng khung trung tâm của PaperMod */
+  :root {
+    /* Thử 1100–1280px tùy ý */
+    --main-width: 1180px;
+  }
+  @media (min-width: 1600px) {
+    :root { --main-width: 1280px; }
+  }
+
+  .page.single { display: block !important; }
+  .toc, .toc-inline { display: none !important; }
+  .post-content { max-width: none !important; }
+
+</style>

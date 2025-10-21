@@ -1,0 +1,20 @@
+baseURL = "https://leviethaidang.github.io/Do_An_Mon_Hoc_Lap_Trinh_Mang/"
+languageCode = "vi"
+title = "Blog Lập Trình Mạng"
+theme = "PaperMod"
+[pagination]
+  pageSize = 10
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url  = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Blog"
+    url  = "/posts/"
+    weight = 2
